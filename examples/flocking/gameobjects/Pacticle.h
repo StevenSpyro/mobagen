@@ -9,6 +9,7 @@ class Particle : public GameObject {
 private:
   // Members
   bool hasConstantSpeed = false;
+  bool windMode = false;
   float speed = 120.;
   float maxAcceleration = 10.;
   float circleSize;  // todo: is this really needed?
