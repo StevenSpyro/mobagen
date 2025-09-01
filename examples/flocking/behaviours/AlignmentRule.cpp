@@ -8,6 +8,7 @@ Vector2f AlignmentRule::computeForce(const std::vector<Boid*>& neighborhood, Boi
   // Try to match the heading of neighbors = Average velocity
   // hint: iterate over the neighborhood
 
+  // Check if neighborhood is empty
   if (neighborhood.empty()) {
     return Vector2f::zero();
   }

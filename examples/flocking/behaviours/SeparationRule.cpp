@@ -16,12 +16,14 @@ Vector2f SeparationRule::computeForce(const std::vector<Boid*>& neighborhood, Bo
   //        // todo: find and apply force only on the closest mates
   //    }
 
+  // Check if neighborhood is empty
   if (!neighborhood.empty()) {
     int countCloseFlockmates = 0;
 
     for (Boid* neighbor : neighborhood) {
       if (neighbor == boid) continue;
 
+      // Get the Distance
       float distance = Vector2f::Distance(boid->getPosition(), neighbor->getPosition());
 
       if (distance > 0.0f && distance <= desiredMinimalDistance) {

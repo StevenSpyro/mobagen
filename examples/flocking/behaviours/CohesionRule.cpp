@@ -7,6 +7,7 @@ Vector2f CohesionRule::computeForce(const std::vector<Boid*>& neighborhood, Boid
   // hint: iterate over the neighborhood
   // find center of mass
 
+  // Check if neighborhood is empty
   if (neighborhood.empty()) {
     return Vector2f::zero();
   }
