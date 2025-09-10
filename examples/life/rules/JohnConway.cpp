@@ -28,13 +28,12 @@ int JohnConway::CountNeighbors(World& world, Point2D point) {
   int count = 0;
   int sideSize = world.SideSize();
 
-  for (int dy = -1; dy <= 1; ++dy) {
-    for (int dx = -1; dx <= 1; ++dx) {
-      if (dx == 0 && dy == 0) continue;         //Skip;
-      size_t ny = (y + dy + lines) % lines;     //Vertical
-      size_t nx = (x + dx + columns) % columns; //Horizontal
-      if (get(ny, nx)) count++;
-    }
+  const int dx[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+  const int dy[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+
+  for (int i = 0; i < 8; ++i) {
+    Point2D neighbor{point.x + dx[i], point.y + dy[i]};
+    if (world.Get(neighbor)) count++;
   }
 
   return count;
