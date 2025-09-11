@@ -11,13 +11,13 @@ void HexagonGameOfLife::Step(World& world) {
       Point2D point{x, y};
       int neighbors = CountNeighbors(world, point);
       bool alive = world.Get(point);
-      bool nextAlive = false;
+      bool nextAlive = (neighbors == 2);
 
-      if (alive) {
-        nextAlive = (neighbors == 2 || neighbors == 3);
-      } else {
-        nextAlive = (neighbors == 3);
-      }
+      //if (alive) {
+      //  nextAlive = (neighbors == 2 || neighbors == 3);
+      //} else {
+      //nextAlive = (neighbors == 2);
+      //}
 
       world.SetNext(point, nextAlive);
     }
@@ -39,7 +39,7 @@ int HexagonGameOfLife::CountNeighbors(World& world, Point2D point) {
     dx[3] = 1; dy[3] = 0;
     dx[4] = -1; dy[4] = 1;
     dx[5] = 0; dy[5] = 1;
-    } else {                 // ODD
+    } else {                 // Odd
     dx[0] = 0;  dy[0] = -1;
     dx[1] = 1;  dy[1] = -1;
     dx[2] = -1; dy[2] = 0;
