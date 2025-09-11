@@ -13,7 +13,7 @@ void JohnConway::Step(World& world) {
       bool alive = world.Get(point);
       bool nextAlive = false;
 
-      ///Conway Rules
+      //Conway Rules
       if (alive) {
         nextAlive = (neighbors == 2 || neighbors == 3);
       } else {
