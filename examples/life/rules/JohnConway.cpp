@@ -5,6 +5,7 @@ void JohnConway::Step(World& world) {
   // todo: implement
   int sideSize = world.SideSize();
 
+  //Loop over the Grid
   for (int y = 0; y < sideSize; ++y) {
     for (int x = 0; x < sideSize; ++x) {
       Point2D point{x, y};
@@ -12,6 +13,7 @@ void JohnConway::Step(World& world) {
       bool alive = world.Get(point);
       bool nextAlive = false;
 
+      ///Conway Rules
       if (alive) {
         nextAlive = (neighbors == 2 || neighbors == 3);
       } else {
