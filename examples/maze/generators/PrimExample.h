@@ -4,11 +4,17 @@
 #include <vector>
 #include "../MazeGeneratorBase.h"
 #include "math/Point2D.h"
+#include <unordered_set>
 #include <map>
 
 class PrimExample : public MazeGeneratorBase {
 private:
+
+
+
   std::vector<Point2D> toBeVisited;
+  std::unordered_set<Point2D> visitedSet;
+  std::unordered_set<Point2D> frontierSet;
   bool initialized = false;
   std::vector<Point2D> getVisitables(World* w, const Point2D& p);
   std::vector<Point2D> getVisitedNeighbors(World* w, const Point2D& p);
