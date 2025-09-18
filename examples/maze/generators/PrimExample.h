@@ -10,8 +10,6 @@
 class PrimExample : public MazeGeneratorBase {
 private:
 
-
-
   std::vector<Point2D> toBeVisited;
   std::unordered_set<Point2D> visitedSet;
   std::unordered_set<Point2D> frontierSet;
