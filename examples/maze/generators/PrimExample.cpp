@@ -26,6 +26,8 @@ namespace {
 }
 
 bool PrimExample::Step(World* w) {
+  // todo: code this
+
   if (!initialized) {
     initialized = true;
     auto sideOver2 = w->GetSize() / 2;
@@ -70,6 +72,8 @@ void PrimExample::Clear(World* world) {
 std::vector<Point2D> PrimExample::getVisitables(World* w, const Point2D& p) {
   std::vector<Point2D> visitables;
   std::vector<Point2D> deltas = {Point2D::UP, Point2D::DOWN, Point2D::LEFT, Point2D::RIGHT};
+  // todo: code this
+
   auto sideOver2 = w->GetSize() / 2;
 
   for (auto& d : deltas) {
@@ -91,6 +95,8 @@ std::vector<Point2D> PrimExample::getVisitables(World* w, const Point2D& p) {
 std::vector<Point2D> PrimExample::getVisitedNeighbors(World* w, const Point2D& p) {
   std::vector<Point2D> neighbors;
   std::vector<Point2D> deltas = {Point2D::UP, Point2D::DOWN, Point2D::LEFT, Point2D::RIGHT};
+  // todo: code this
+
   auto sideOver2 = w->GetSize() / 2;
 
   for (auto& d : deltas) {
