@@ -29,7 +29,6 @@ bool HuntAndKillExample::Step(World* w) {
   // todo: code this
   auto sideOver2 = w->GetSize() / 2;
 
-  // Initialize on first call
   if (!initialized) {
     initialized = true;
     Point2D start = randomStartPoint(w);
@@ -40,32 +39,30 @@ bool HuntAndKillExample::Step(World* w) {
     w->SetNodeColor(current, Color::Red);
   }
 
-  // Phase 1: Random walk until dead end
+  // Walk
   auto visitables = getVisitables(w, current);
   if (!visitables.empty()) {
-    // Choose a random unvisited neighbor
+    // Random neighbor
     Point2D next = visitables[Random::Range(0, (int)visitables.size() - 1)];
 
-    // Remove wall between current and next
     RemoveWall(w, current, next);
 
-    // Mark next as visited
     visited[next.y][next.x] = true;
-    w->SetNodeColor(next, Color::Green);   // newly carved
-    w->SetNodeColor(current, Color::Red);  // just carved
+    w->SetNodeColor(next, Color::Green);
+    w->SetNodeColor(current, Color::Red);
 
     current = next;
     return true;
   }
 
-  // Phase 2: Hunt for unvisited cell with visited neighbor
+  // Hunt
   for (int y = -sideOver2; y <= sideOver2; y++) {
     for (int x = -sideOver2; x <= sideOver2; x++) {
       if (!visited[y][x]) {
         Point2D candidate{x, y};
         auto neighbors = getVisitedNeighbors(w, candidate);
         if (!neighbors.empty()) {
-          // Found the next start point
+          // Next start point
           Point2D neighbor = neighbors[Random::Range(0, (int)neighbors.size() - 1)];
 
           RemoveWall(w, candidate, neighbor);
@@ -81,7 +78,6 @@ bool HuntAndKillExample::Step(World* w) {
     }
   }
 
-  // No unvisited cells remain
   return false;
 }
 

@@ -55,7 +55,7 @@ bool PrimExample::Step(World* w) {
 
   visitedSet.insert(current);
   w->SetNodeColor(current, Color::Red);
-  w->SetNodeColor(neighbor, Color::Red);
+  //w->SetNodeColor(neighbor, Color::Green);
 
   auto vs = getVisitables(w, current);
   toBeVisited.insert(toBeVisited.end(), vs.begin(), vs.end());
