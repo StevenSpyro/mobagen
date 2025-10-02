@@ -106,6 +106,13 @@ public:
     n.push_back(SE(point));
     return n;
   }
+
+  // Check the Border
+  bool isBorder(const Point2D& p);
+
+  // Get Visitable Neighbors
+  std::vector<Point2D> getVisitableNeighbors(const Point2D& p);
+
 };
 
 #endif  // WORLD_H
