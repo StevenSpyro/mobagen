@@ -253,4 +253,5 @@ std::vector<Point2D> World::getVisitableNeighbors(const Point2D& p) {
     if (n == getCat()) continue;
     result.push_back(n);
   }
+  return result;
 }
