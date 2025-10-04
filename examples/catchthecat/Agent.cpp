@@ -2,6 +2,8 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <queue>
+#include <algorithm>
+#include <limits>
 #include "World.h"
 using namespace std;
 
@@ -28,6 +30,24 @@ std::vector<Point2D> Agent::generatePath(World* w) {
   frontier.push(catPos);
   frontierSet.insert(catPos);
   Point2D borderExit = Point2D::INFINITE;  // if at the end of the loop we dont find a border, we have to return random points
+
+  // Diagonal Directions
+  auto forCube = [](const Point2D& p) {
+    int col = p.x;
+    int row = p.y;
+    int cx = col - (row - (row& 1)) /2;
+    int cz = row;
+    int cy = -cx - cz;
+    return std::tuple<int, int, int> (cx, cy, cz);
+  };
+
+  //Deal with the Hexagon
+  auto hexDist = [&](const Point2D& a, const Point2D& b) -> int {
+    int ax, ay, az, bx, by, bz;
+    std::tie(ax, ay, az);
+    std::tie(bx, by, bz);
+    return std::max({std::abs(ax - bx), std::abs(ay - by), std::abs(az - bz)});
+  };
 
   while (!frontier.empty()) {
     // get the current from frontier
