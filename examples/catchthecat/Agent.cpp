@@ -7,6 +7,11 @@
 #include "World.h"
 using namespace std;
 
+//Noted code from professor
+//int huristic(Point2D& p, int sideSizeOver2 {
+//  return std::min({sideSideOver2 - abs(p.x), sideSizeOver2 - abs(p.y)}) +
+// shadowcastingVisibilityFunction(p, sideSizeOver2);
+
 std::vector<Point2D> Agent::generatePath(World* w) {
   unordered_map<Point2D, Point2D> cameFrom;  // to build the flowfield and build the path
   queue<Point2D> frontier;                   // to store next ones to visit
