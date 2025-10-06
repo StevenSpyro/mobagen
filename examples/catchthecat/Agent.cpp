@@ -46,7 +46,7 @@ std::vector<Point2D> Agent::generatePath(World* w) {
     return std::tuple<int, int, int> (cx, cy, cz);
   };
 
-  //Deal with the Hexagon
+  // Deal with the Hexagon
   auto hexDist = [&](const Point2D& a, const Point2D& b) -> int {
     int ax, ay, az, bx, by, bz;
     std::tie(ax, ay, az);
