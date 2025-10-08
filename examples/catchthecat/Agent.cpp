@@ -145,6 +145,4 @@ std::vector<Point2D> Agent::generatePath(World* w) {
 
   // Return the path
   return path;
-
-  return path;
 }
