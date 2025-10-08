@@ -1,8 +1,10 @@
 #include "Cat.h"
 #include "World.h"
+#include "Agent.h"
 #include <stdexcept>
 
 Point2D Cat::Move(World* world) {
+  /*
   auto rand = Random::Range(0, 5);
   auto pos = world->getCat();
   switch (rand) {
@@ -21,4 +23,15 @@ Point2D Cat::Move(World* world) {
     default:
       throw "random out of range";
   }
+  */
+
+  std::vector<Point2D> path = Agent::generatePath(world);
+
+  if (!path.empty()) {
+    // Go to exit
+    return path.front();
+  }
+
+  // Trapped?
+  return world->getCat();
 }
